@@ -26,10 +26,6 @@ USER node
 
 FROM node:18-alpine As build
 
-# ENV NODE_ENV production
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package*.json ./
@@ -49,6 +45,10 @@ USER node
 ###################
 
 FROM node:18-alpine As production
+
+# ENV NODE_ENV production
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
