@@ -11,8 +11,8 @@ services:
       - app-network
     volumes:
       # - .:/app
-      - .:/rh/src/app
-      - ./rh/src/app/node_modules
+      - .:/cami-api/src/app
+      - ./cami-api/src/app/node_modules
     depends_on:
       - db
     # environment:
