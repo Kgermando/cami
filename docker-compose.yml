@@ -15,8 +15,8 @@ services:
       - ./rh/src/app/node_modules
     depends_on:
       - db
-    environment:
-      - DATABASE_URL=postgres://postgres:kataku@db:5432/postgres
+    # environment:
+    #   - DATABASE_URL=postgres://postgres:kataku@db:5432/postgres
       # - NODE_ENV: production
 
   db:
@@ -29,9 +29,9 @@ services:
       - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
 
     environment:
-      - POSTGRES_USER=postgres
+      # - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=kataku
-      - POSTGRES_DB=postgres
+      # - POSTGRES_DB=postgres
    
     ports:
       - 54320:5432

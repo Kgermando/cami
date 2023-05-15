@@ -12,14 +12,24 @@ import { FinExterieurDepModule } from './fin-exterieurs/fin-exterieur-dep/fin-ex
 import { CaisseDepModule } from './caisses/caisse-dep/caisse-dep.module';
 import { BanqueDepModule } from './banques/banque-dep/banque-dep.module';
 import { DetteModule } from './dette/dette.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DB_HOST'),
+        port: +configService.get<number>('DB_PORT'),
+        username: configService.get('DB_USERNAME'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_NAME'),
+        entities: [],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
     }),
     CommonModule,
     UserModule,
