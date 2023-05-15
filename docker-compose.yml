@@ -30,7 +30,7 @@ services:
 
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWRD=kataku
+      - POSTGRES_PASSWORD=kataku
       - POSTGRES_DB=postgres
    
     ports:
