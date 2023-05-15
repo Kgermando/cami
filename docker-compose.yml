@@ -29,9 +29,9 @@ services:
       - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
 
     environment:
-      - POSTGRES_USER = postgres
-      - POSTGRES_PASSWRD = kataku
-      - POSTGRES_DB = postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWRD=kataku
+      - POSTGRES_DB=postgres
    
     ports:
       - 54320:5432
