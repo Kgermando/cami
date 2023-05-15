@@ -17,7 +17,7 @@ import { DetteModule } from './dette/dette.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: process.env.DATABASE_URL,
+      url: "postgres://postgres:kataku@postgres:5432/postgres",
       autoLoadEntities: true,
       synchronize: true,
     }),
