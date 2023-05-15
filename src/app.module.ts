@@ -13,19 +13,25 @@ import { CaisseDepModule } from './caisses/caisse-dep/caisse-dep.module';
 import { BanqueDepModule } from './banques/banque-dep/banque-dep.module';
 import { DetteModule } from './dette/dette.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      load: [configuration],
+    }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DB_HOST'),
-        port: +configService.get<number>('DB_PORT'),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_NAME'),
+        host: configService.get<string>('database.host'),
+        port: configService.get<number>('database.port'),
+        username: configService.get<string>('database.user'),
+        password: configService.get<string>('database.password'),
+        database: configService.get<string>('database.db'),
+        ssl: {
+          ca: configService.get<string>('database.ca'),
+        },
         autoLoadEntities: true,
         synchronize: true,
       }),
