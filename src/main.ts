@@ -14,7 +14,9 @@ async function bootstrap() {
     credentials: true
   });
 
-  const config = app.get("ConfigService");
-  await app.listen(config.get("port"));
+  // const config = app.get("ConfigService");
+  // await app.listen(config.get("port"));
+
+  await app.listen(3000);
 }
 bootstrap();
