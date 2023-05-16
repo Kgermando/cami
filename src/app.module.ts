@@ -20,6 +20,9 @@ import configuration from './config/configuration';
     ConfigModule.forRoot({
       load: [configuration],
     }),
+    ConfigModule.forRoot({
+      expandVariables: true,
+    }),
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -48,5 +51,6 @@ import configuration from './config/configuration';
     BanqueDepModule,
     DetteModule,
   ],
+
 })
 export class AppModule { }
