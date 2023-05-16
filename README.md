@@ -9,7 +9,7 @@ node -v
 npm i -g @nestjs/cli
 
 
-npm install --save @nestjs/typeorm typeorm postgres pg
+npm install --save @nestjs/typeorm typeorm postgres pg @nestjs/config
 npm i bcrypt
 npm i -D @types/bcrypt
 npm install bcryptjs --save
@@ -17,8 +17,5 @@ npm i --save class-validator class-transformer
 npm install --save @nestjs/jwt
 npm i cookie-parser
 npm i -D @types/cookie-parser
-npm i multer @types/multer
-npm uninstall @nestjs/config
-
-npm i @nestjs/config@2.2.0
+npm i multer @types/multer  
 

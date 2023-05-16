@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from "@nestjs/common";
 import * as cookieParser from 'cookie-parser';
+import { ConfigService } from '@nestjs/config';
 // import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
@@ -13,7 +14,8 @@ async function bootstrap() {
     origin: 'http://localhst:4200',
     credentials: true
   });
-  const config = app.get("ConfigService");
-  await app.listen(config.get("port"));
+  const configService = app.get(ConfigService);
+  const port = configService.get('port');
+  await app.listen(port);
 }
 bootstrap();
