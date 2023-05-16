@@ -32,6 +32,8 @@ export class User {
 
     @Column()
     date_naissance: Date;
+
+    
     @Column()
     lieu_naissance: string;
 
