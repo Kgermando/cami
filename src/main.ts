@@ -13,10 +13,7 @@ async function bootstrap() {
     origin: 'http://localhst:4200',
     credentials: true
   });
-
-  // const config = app.get("ConfigService");
-  // await app.listen(config.get("port"));
-
-  await app.listen(3000);
+  const config = app.get("ConfigService");
+  await app.listen(config.get("port"));
 }
 bootstrap();

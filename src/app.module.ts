@@ -13,16 +13,16 @@ import { CaisseDepModule } from './caisses/caisse-dep/caisse-dep.module';
 import { BanqueDepModule } from './banques/banque-dep/banque-dep.module';
 import { DetteModule } from './dette/dette.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import configuration from './config/configuration';
+import configuration from './config/configuration'; 
 
 @Module({
-  imports: [
+  imports: [ 
     ConfigModule.forRoot({
+      isGlobal: true,
       load: [configuration],
-      isGlobal: true, // Add this line to make ConfigModule global
     }),
+
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get<string>('database.host'),
@@ -35,7 +35,9 @@ import configuration from './config/configuration';
       }),
       inject: [ConfigService],
     }),
-    ConfigModule.forRoot(),
+
+    ConfigModule,
+
     CommonModule,
     UserModule,
     AuthModule,

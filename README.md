@@ -18,6 +18,7 @@ npm install --save @nestjs/jwt
 npm i cookie-parser
 npm i -D @types/cookie-parser
 npm i multer @types/multer
-npm install @nestjs/config
+npm uninstall @nestjs/config
 
+npm i @nestjs/config@2.2.0
 
