@@ -1,0 +1,23 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "46.101.152.230",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "cami",
+            "database": "rootdb",
+            "username": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "46.101.152.230",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ddd",
+            "database": "postgres",
+            "username": "postgres"
+        }
+    ]
+}
