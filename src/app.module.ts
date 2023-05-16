@@ -20,6 +20,7 @@ import configuration from './config/configuration';
     ConfigModule.forRoot({
       load: [configuration],
     }),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
