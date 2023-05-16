@@ -19,11 +19,8 @@ import configuration from './config/configuration';
   imports: [
     ConfigModule.forRoot({
       load: [configuration],
+      isGlobal: true, // Add this line to make ConfigModule global
     }),
-    ConfigModule.forRoot({
-      expandVariables: true,
-    }),
-    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -51,6 +48,7 @@ import configuration from './config/configuration';
     BanqueDepModule,
     DetteModule,
   ],
+  exports: [ConfigModule]
 
 })
 export class AppModule { }
